@@ -149,17 +149,39 @@ class Clock extends React.Component {
     }
 }
 
-function NumberList(props){
-    const numbers = props.numbers;
-    const listItems = numbers.map((number, index)=>
-        <li key={index}>{number}</li>
-    );
-
+function ListItem(props) {
+    const value = props.value;
     return (
-        <ul>
-            {listItems}
-        </ul>
+      // Wrong! There is no need to specify the key here:
+      <li key={value.toString()}>
+        {value}
+      </li>
     );
+  }
+
+function NumberList(props){
+    //FYI: Using 'index' as the...well...index. Is suboptimal, because
+    //these indeces get reused upon re-rendering and that can
+    //lead to a number of UI errors.
+    const numbers = props.numbers;
+            // const listItems = numbers.map((number, index)=>
+            //     <li key={index}>{number}</li>
+            // );
+
+            // return (
+            //     <ul>
+            //         {listItems}
+            //     </ul>
+            // );
+    //It is also possible to embed the expression in curly
+    //braces in side the JSX like so:
+    return(
+        <ul>
+            {numbers.map((number)=>{
+                return <ListItem key={number.toString()} value={number} />
+            })}
+        </ul>
+    )
 }
 
 
