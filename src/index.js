@@ -12,6 +12,27 @@ class Clock extends React.Component {
             date: new Date()
         };
     }
+
+
+    componentDidMount(){
+        //We are free to add additional fields to the class
+        //like below, if we need to store something that doesn't
+        //participate in the data flow ((such as our timerID))
+        this.timerID = setInterval(()=>{
+            this.tick()
+        }, 1000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        this.setState({
+            date: new Date()
+        });
+    }
+
     render() {
         return (
             <div>
