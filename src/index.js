@@ -198,6 +198,7 @@ function App() {
             <Mailbox messages={messages}/>
             <NumberList numbers={numbers} />
             <NameFormControlledComponent />
+            <FlavorFormControlledComponent />
         </div>
     )
 }
@@ -232,6 +233,47 @@ class NameFormControlledComponent extends React.Component {
                 <input type="submit" value="Submit" />
             </form>
         )
+    }
+}
+
+class FlavorFormControlledComponent extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            value: 'coconut'
+        }
+    }
+
+    handleChange(event) {
+        this.setState({
+            value: event.target.value
+        })
+    }
+
+    handleSubmit(event) {
+        alert('Your favorite flavor is: ' + this.state.value);
+        event.preventDefault();
+    }
+//You can set the select's default choice by seting the attr 'value'
+//to the value of an option which matches it. Here we auto set "Coconut"
+//Yum
+    render(){
+        return(
+            <form onSubmit={this.handleSubmit.bind(this)}>
+                <label>
+                    Pick your favorite flavor:
+                    
+                    <select value={this.state.value} onChange={this.handleChange.bind(this)}>
+
+                        <option value="grapefruit">GRAPEFRUIT</option>
+                        <option value="lime">LIME</option>
+                        <option value="coconut">COCONUT</option>
+                        <option value="mango">MANGO</option>
+                    </select>
+                </label>
+                <input type="submit" value="Submit Flavor" />
+            </form>
+        );
     }
 }
 
