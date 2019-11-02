@@ -263,7 +263,7 @@ class FlavorFormControlledComponent extends React.Component {
                 <label>
                     Pick your favorite flavor:
                     
-                    <select value={this.state.value} onChange={this.handleChange.bind(this)}>
+                    <select multiple={true} value={[this.state.value, 'lime']} onChange={this.handleChange.bind(this)}>
 
                         <option value="grapefruit">GRAPEFRUIT</option>
                         <option value="lime">LIME</option>
