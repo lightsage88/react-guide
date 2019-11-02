@@ -149,15 +149,24 @@ class Clock extends React.Component {
     }
 }
 
+function NumberList(props){
+    const numbers = props.numbers;
+    const listItems = numbers.map((number, index)=>
+        <li key={index}>{number}</li>
+    );
+
+    return (
+        <ul>
+            {listItems}
+        </ul>
+    );
+}
+
 
 const messages = ["Spiderman", "Batman", "Superman"]
-
+const numbers = [1,2,3,4,5,6,7,8,9];
 
 function App() {
-    const numbers = [1,2,3,4,5];
-    const listItems = numbers.map((number)=>{
-        return <li>{number}</li>
-    })
     return (
         <div>
             <Clock />
@@ -165,10 +174,7 @@ function App() {
             <Clock />
             <LoginControl />
             <Mailbox messages={messages}/>
-            <h3>List Items!</h3>
-            <ul>
-                {listItems}
-            </ul>
+            <NumberList numbers={numbers} />
         </div>
     )
 }
