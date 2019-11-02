@@ -13,7 +13,7 @@ class Clock extends React.Component {
             toggleStatus: true
         };
 
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this, x);
     }
 
 
@@ -30,7 +30,9 @@ class Clock extends React.Component {
         clearInterval(this.timerID);
     }
 
-    handleClick() {
+    handleClick(x,e) {
+        console.log(e);
+        console.log(x);
         this.setState( state => ({
             toggleStatus: !state.toggleStatus
         }))
@@ -59,7 +61,7 @@ class Clock extends React.Component {
             <div>
                 <h1>Hello, world!</h1>
                 <h2>It is, {this.state.date.toLocaleTimeString()}</h2>
-                <button onClick={this.handleClick}>{this.state.toggleStatus ? "true" : "false"}</button>
+                <button onClick={this.handleClick.bind(this,'superman')}>{this.state.toggleStatus ? "true" : "false"}</button>
             </div>
         );
     }
