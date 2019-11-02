@@ -5,6 +5,18 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 
+function Mailbox(props) {
+    const unreadMessages = props.messages;
+    return(
+        <div>
+            <h1>Mail</h1>
+            {unreadMessages.length > 0 && <h2>You have some undead mail ({props.messages.length})...brains!</h2>}
+        </div>
+    );
+}
+
+
+
     function UserGreeting(props){
         return <h1>Welcome back!</h1>
     }
@@ -137,6 +149,8 @@ class Clock extends React.Component {
     }
 }
 
+const messages = ["Spiderman", "Batman", "Superman"]
+
 
 function App() {
     return (
@@ -145,10 +159,10 @@ function App() {
             <Clock />
             <Clock />
             <LoginControl />
+            <Mailbox messages={messages}/>
         </div>
     )
 }
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 
