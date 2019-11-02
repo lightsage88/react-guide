@@ -212,7 +212,7 @@ class NameFormControlledComponent extends React.Component {
 
     handleChange(event) {
         this.setState({
-            value: event.target.value
+            value: event.target.value.toUpperCase()
         })
     }
 
