@@ -5,6 +5,20 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 
+function UserGreeting(props){
+    return <h1>Welcome back!</h1>
+}
+
+function GuestGreeting(props){
+    return <h1>Please sign up.</h1>
+}
+
+function Greeting(props){
+    const toggleStatus = props.toggleStatus;
+    return toggleStatus ?  <UserGreeting/> : <GuestGreeting/>
+}
+
+
 class Clock extends React.Component {
     constructor(props){
         super(props);
@@ -62,6 +76,7 @@ class Clock extends React.Component {
                 <h1>Hello, world!</h1>
                 <h2>It is, {this.state.date.toLocaleTimeString()}</h2>
                 <button onClick={this.handleClick.bind(this,'superman')}>{this.state.toggleStatus ? "true" : "false"}</button>
+                <Greeting toggleStatus={this.state.toggleStatus} />
             </div>
         );
     }
