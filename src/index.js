@@ -28,9 +28,21 @@ class Clock extends React.Component {
     }
 
     tick() {
-        this.setState({
-            date: new Date()
-        });
+        //the call below may fail to set the state due to
+        //there potentially being many setState events occuring
+    
+    // this.setState({
+    //     date: new Date()
+    // });
+
+        //To deal with this, you can use a second form of 
+        //setState which accepts a function instead of an object
+        //the function's first argument will be the previousState
+        //the 2nd argument can be the current props
+
+    this.setState((prevState, props)=>({
+         date: new Date()
+        }))
     }
 
     render() {
