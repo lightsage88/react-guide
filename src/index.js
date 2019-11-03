@@ -351,7 +351,7 @@ class TemperatureInput extends React.Component {
     }
 }
 
-function WelcomeDialog(){
+function WelcomeDialog(props){
     return(
         <FancyBorder color="blue">
             <h1 className="Dialog-title">
@@ -360,6 +360,7 @@ function WelcomeDialog(){
             <p className="Dialog-message">
                 Thank you for visiting our spacecraft!
             </p>
+            {props.bochoGod}
         </FancyBorder>
     );
 }
@@ -369,14 +370,37 @@ function FancyBorder(props){
         <div className={'FancyBorder FancyBorder-' + props.color}>
             {props.children}
             <h1>Hen god</h1>
+            {/* {props.bochoGod} */}
         </div>
     )
+}
+
+function SplitPane(props){
+    return(
+        <div className="SplitPane">
+            <div className="SplitPane-left">
+                {props.left}
+            </div>
+            <div className="SplitPane-right">
+                {props.right}
+            </div>
+        </div>
+    );
 }
 
 function App() {
     return (
         <div>
-            <WelcomeDialog />
+        <SplitPane 
+            left={
+                <Clock/>
+            }
+            right={
+                <h1>hey</h1>
+            }
+
+        />
+            <WelcomeDialog bochoGod={<h1>Wolbocho is king</h1>}/>
             <Clock />
             <Clock />
             <Clock />
