@@ -188,21 +188,7 @@ function NumberList(props){
 const messages = ["Spiderman", "Batman", "Superman"]
 const numbers = [1,2,3,4,5,6,7,8,9];
 
-function App() {
-    return (
-        <div>
-            <Clock />
-            <Clock />
-            <Clock />
-            <LoginControl />
-            <Mailbox messages={messages}/>
-            <NumberList numbers={numbers} />
-            <NameFormControlledComponent />
-            <FlavorFormControlledComponent />
-            <Calculator />
-        </div>
-    )
-}
+
 
 class NameFormControlledComponent extends React.Component {
     constructor(props){
@@ -363,6 +349,45 @@ class TemperatureInput extends React.Component {
             </fieldset>
         );
     }
+}
+
+function WelcomeDialog(){
+    return(
+        <FancyBorder color="blue">
+            <h1 className="Dialog-title">
+                Welcome
+            </h1>
+            <p className="Dialog-message">
+                Thank you for visiting our spacecraft!
+            </p>
+        </FancyBorder>
+    );
+}
+
+function FancyBorder(props){
+    return(
+        <div className={'FancyBorder FancyBorder-' + props.color}>
+            {props.children}
+            <h1>Hen god</h1>
+        </div>
+    )
+}
+
+function App() {
+    return (
+        <div>
+            <WelcomeDialog />
+            <Clock />
+            <Clock />
+            <Clock />
+            <LoginControl />
+            <Mailbox messages={messages}/>
+            <NumberList numbers={numbers} />
+            <NameFormControlledComponent />
+            <FlavorFormControlledComponent />
+            <Calculator />
+        </div>
+    )
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
